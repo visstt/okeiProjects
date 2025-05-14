@@ -1,0 +1,15 @@
+.container {
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 1440px;
+  box-sizing: border-box;
+}
+.gridLines {
+  margin: 0 auto;
+  height: 100%;
+  background-image: url("/gridLines.svg");
+  background-size: contain;
+}
+/* * {
+  border: 1px solid red;
+} */
