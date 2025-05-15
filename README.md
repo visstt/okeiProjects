@@ -9,16 +9,27 @@
 - **Бэкенд** - серверная часть API: [oksei-project-backend](https://github.com/vitaly06/oksei-project-backend)
 
 ## Основные функции
-- <div align="center"><img src="public/readmeScreenshots/mainPage.png" width="75%" alt="Главная страница" /></div>
+
+<div align="center"><img src="public/readmeScreenshots/mainPage.png" width="75%" alt="Главная страница" /></div>
+
 - **Информация о руководителях**: Секция с данными кураторов проектной деятельности колледжа.
-- <div align="center"><img src="public/readmeScreenshots/prepods.png" width="75%" alt="Информация о руководителях" /></div>
+
+<div align="center"><img src="public/readmeScreenshots/prepods.png" width="75%" alt="Информация о руководителях" /></div>
+
 - **Визуализация направлений**: Уникальные дизайнерские изображения для каждого направления проектов.
-- <div align="center"><img src="public/readmeScreenshots/images.png" width="75%" alt="Визуализация направлений" /></div>
+
+<div align="center"><img src="public/readmeScreenshots/images.png" width="75%" alt="Визуализация направлений" /></div>
+
 - **Витрина проектов**: Динамическая галерея с карточками проектов, реализованных студентами и преподавателями колледжа, с подробными описаниями и изображениями.
-- <div align="center"><img src="public/readmeScreenshots/projects.png" width="75%" alt="Витрина проектов" /></div>
+
+<div align="center"><img src="public/readmeScreenshots/projects.png" width="75%" alt="Витрина проектов" /></div>
+
 - **Форма заявок**: Интегрированная форма для отправки предложений по проектам.
-- <div align="center"><img src="public/readmeScreenshots/form.png" width="75%" alt="Форма заявок" /></div>
+
+<div align="center"><img src="public/readmeScreenshots/form.png" width="75%" alt="Форма заявок" /></div>
+
 - **Адаптивный дизайн**: Оптимизирован для работы на десктопах и мобильных устройствах, обеспечивая удобство для всех пользователей.
+
 
 ## Установка
 Для запуска проекта локально выполните следующие шаги:
@@ -55,7 +66,7 @@
    Приложение будет доступно по адресу `http://localhost:5173`.
 
 ## Технологии
-- **React.js**: Фреймворк для построения интерфейса.
+- **React.js**: Библиотека для построения интерфейса.
 - **JavaScript (ES6+)**: Основной язык программирования.
 - **Модульный CSS**: Стилизация с поддержкой анимаций.
 - **Vite**: Инструменты сборки.
