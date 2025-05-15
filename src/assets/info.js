@@ -86,7 +86,7 @@ export const cards = [
     description: "Разработка онлайн маркетплейса для медицинской техники",
     tags: "Веб-разработка",
     name: "SdMedik",
-    image: "/public/projectsPhoto/sdmedic.png",
+    image: "/projectsPhoto/sdmedic.png",
   },
 
   {
@@ -95,14 +95,14 @@ export const cards = [
       "Создание VR очков от компании HTC, для хакатона, организатором которого является Varwin",
     tags: "3D моделирование",
     name: "VR очки HTC",
-    image: "/public/projectsPhoto/ViveVision.png",
+    image: "/projectsPhoto/ViveVision.png",
   },
   {
     developer: "Безгин Никита, Даниелян Милана",
     description: "Карточная игра в стиле русских народных сказок",
     tags: "Граф. Дизайн",
     name: "Лукоморье",
-    image: "/public/projectsPhoto/lykomorie.png",
+    image: "/projectsPhoto/lykomorie.png",
   },
 
   {
@@ -111,7 +111,7 @@ export const cards = [
       "Приложение направленно на развитие туризма в Оренбургскую область",
     tags: "Мобильное приложение",
     name: "Goat Clicker",
-    image: "/public/projectsPhoto/goat.jpg",
+    image: "/projectsPhoto/goat.jpg",
   },
 
   {
@@ -119,28 +119,44 @@ export const cards = [
     description: "Разработка дизайна для стаканов марки О’КЕЙ",
     tags: "Граф. дизайн",
     name: "Кофейные кружки",
-    image: "/public/projectsPhoto/cups.png",
+    image: "/projectsPhoto/cups.png",
+  },
+  {
+    developer: "Тушев Дмитрий",
+    description:
+      "Resonance — это медитативная приключенческая игра, созданная для тех, кто ищет покой и вдохновение в гармонии с природой. Погрузитесь в мир, где каждый шаг сопровождается мягким шелестом листвы, пением птиц и лёгким дыханием ветра",
+    tags: "Разработка игр",
+    name: "Resonance",
+    image: "/projectsPhoto/resonans.jpg",
   },
   {
     developer: "Гиматдинова Кира, Филиппов Роман",
     description: "Создание мерча для крупной компании",
     tags: "Граф. дизайн",
     name: "Мерч с душой «Хохлому»",
-    image: "/public/projectsPhoto/hoodie.png",
+    image: "/projectsPhoto/hoodie.png",
   },
   {
     developer: "Зубкова Надежда",
     description: "Новогоднее поздравление для банка Оренбург",
     tags: "3D моделирование",
     name: "С новым годом, Оренбург!",
-    image: "/public/projectsPhoto/bankOrenburg.png",
+    image: "/projectsPhoto/bankOrenburg.png",
   },
   {
     developer: "Безгин Никита",
     description: "Создание этикетки для бренда «Капелька лета»",
     tags: "Граф. дизайн",
     name: "Создание этикетки",
-    image: "/public/projectsPhoto/kapelka.png",
+    image: "/projectsPhoto/kapelka.png",
+  },
+  {
+    developer: "Тушев Дмитрий",
+    description:
+      "Dreamscape — это мир бесконечного творчества и вдохновения, где каждый игрок может выразить свою индивидуальность, создавая уникальные произведения и делясь ими с другими",
+    tags: "Разработка игр",
+    name: "Dreamscape",
+    image: "/projectsPhoto/dreamscape.jpg",
   },
   {
     developer: "Вадим Пилюгин",
@@ -148,7 +164,7 @@ export const cards = [
       "Проект создан с целью ознакомления с деятельностью различных цехов завода «Уральская сталь»",
     tags: "VR разработка",
     name: "Цех завода «Уральская сталь»",
-    image: "/public/projectsPhoto/uralStal.png",
+    image: "/projectsPhoto/uralStal.png",
   },
   {
     developer: "Бончев Йордан, Пустовалов Даниил",
@@ -156,7 +172,7 @@ export const cards = [
       "Полная симуляция того что происходит в цехе по переплавке медного штейка",
     tags: "VR разработка",
     name: "Симуляция работы в цехе",
-    image: "/public/projectsPhoto/mednogorsk.png",
+    image: "/projectsPhoto/mednogorsk.png",
   },
   {
     developer: "Шульга Никита, Головчик Артем",
@@ -164,13 +180,21 @@ export const cards = [
       "Проект направлен на обучение новых сотрудников которые хотят пойти работать на этот завод",
     tags: "VR разработка",
     name: "VR-Комплекс «Сосисочная лихорадка»",
-    image: "/public/projectsPhoto/sosiski.png",
+    image: "/projectsPhoto/sosiski.png",
   },
   {
     developer: "Костевич Валерия, Манжос Оксана",
     description: "Рекламная съемка для южно Уральской воды",
     tags: "Фотосъемка",
     name: "Фотосъемка для бренда воды",
-    image: "/public/projectsPhoto/yuzshnouralskaya.png",
+    image: "/projectsPhoto/yuzshnouralskaya.png",
+  },
+  {
+    developer: "Тушев Дмитрий",
+    description:
+      "Night City Drift — это динамичный симулятор дрифта в ночном городе, созданный на Unity с использованием WebGL. Настраивайте машины, осваивайте заносы под огнями небоскребов и соревнуйтесь за звание лучшего",
+    tags: "Разработка игр",
+    name: "Night City Drift",
+    image: "/projectsPhoto/drift.jpg",
   },
 ];
