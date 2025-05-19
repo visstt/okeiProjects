@@ -10,8 +10,27 @@ import {
   blockVariants,
 } from "../../../../assets/animation/heroAnimation";
 import { navigateTo } from "../../../../assets/functions";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const preloadImage = () => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = "/hero.png";
+        img.onload = () => resolve();
+        img.onerror = () => {
+          console.error("Ошибка загрузки изображения /hero.png");
+          resolve();
+        };
+      });
+    };
+
+    preloadImage().then(() => setImageLoaded(true));
+  }, []);
+
   return (
     <div className="gridLines">
       <div className="container">
@@ -49,7 +68,12 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            <img src="/hero.png" alt="hero" className={styles.hero} />
+            <img
+              src="/hero.png"
+              alt="hero"
+              className={styles.hero}
+              loading="eager"
+            />
           </motion.div>
 
           <motion.div

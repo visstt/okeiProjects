@@ -6,7 +6,9 @@ import { directions, directionImages } from "../../../assets/info";
 export default function Directions() {
   const [activeDirection, setActiveDirection] = useState("Веб-разработка");
   const [itemHeight, setItemHeight] = useState(60);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
+  // Обновление высоты элементов при изменении размера окна
   const updateItemHeight = () => {
     const width = window.innerWidth;
     if (width <= 450) {
@@ -18,7 +20,27 @@ export default function Directions() {
     }
   };
 
+  // Предварительная загрузка изображений
   useEffect(() => {
+    const preloadImages = async () => {
+      const imageUrls = Object.values(directionImages);
+      const promises = imageUrls.map((url) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = url;
+          img.onload = resolve;
+          img.onerror = () => {
+            console.error(`Ошибка загрузки изображения: ${url}`);
+            resolve();
+          };
+        });
+      });
+
+      await Promise.all(promises);
+      setImagesLoaded(true);
+    };
+
+    preloadImages();
     updateItemHeight();
     window.addEventListener("resize", updateItemHeight);
     return () => window.removeEventListener("resize", updateItemHeight);
@@ -29,6 +51,25 @@ export default function Directions() {
   };
 
   const topPosition = directions.indexOf(activeDirection) * itemHeight;
+
+  if (!imagesLoaded) {
+    return (
+      <div className="container" id="directions">
+        <div className={styles.wrapper}>
+          <div className={styles.wrapper__photo}>
+            <div className={styles.loading}>Загрузка...</div>
+          </div>
+          <div className={styles.wrapper__info}>
+            {directions.map((direction) => (
+              <p key={direction} style={{ height: itemHeight }}>
+                {direction}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container" id="directions">
@@ -42,13 +83,14 @@ export default function Directions() {
         <motion.div className={styles.wrapper__photo}>
           <AnimatePresence mode="wait">
             <motion.img
-              key={activeDirection} // Ключ меняется при смене направления
+              key={activeDirection}
               src={directionImages[activeDirection]}
               alt={activeDirection}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
+              loading="eager"
             />
           </AnimatePresence>
         </motion.div>
