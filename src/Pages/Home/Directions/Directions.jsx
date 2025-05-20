@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import styles from "./Directions.module.css";
 import { directions, directionImages } from "../../../assets/info";
 
@@ -8,7 +7,6 @@ export default function Directions() {
 	const [itemHeight, setItemHeight] = useState(60);
 	const [imagesLoaded, setImagesLoaded] = useState(false);
 
-	// Обновление высоты элементов при изменении размера окна
 	const updateItemHeight = () => {
 		const width = window.innerWidth;
 		if (width <= 450) {
@@ -20,7 +18,6 @@ export default function Directions() {
 		}
 	};
 
-	// Предварительная загрузка изображений
 	useEffect(() => {
 		const preloadImages = async () => {
 			const imageUrls = Object.values(directionImages);
@@ -28,7 +25,11 @@ export default function Directions() {
 				return new Promise((resolve) => {
 					const img = new Image();
 					img.src = url;
-					img.onload = resolve;
+					img.srcset = `${url} 1x, ${url.replace(".png", "@2x.png")} 2x, ${url.replace(".png", "@3x.png")} 3x`;
+					img.onload = () => {
+						console.log(`Изображение загружено: ${url}`);
+						resolve();
+					};
 					img.onerror = () => {
 						console.error(`Ошибка загрузки изображения: ${url}`);
 						resolve();
@@ -37,6 +38,7 @@ export default function Directions() {
 			});
 
 			await Promise.all(promises);
+			console.log("Все изображения загружены");
 			setImagesLoaded(true);
 		};
 
@@ -47,6 +49,7 @@ export default function Directions() {
 	}, []);
 
 	const handleClick = (direction) => {
+		console.log("Active direction:", direction);
 		setActiveDirection(direction);
 	};
 
@@ -54,67 +57,53 @@ export default function Directions() {
 
 	return (
 		<div className="container" id="directions">
-			<motion.div
-				className={styles.wrapper}
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.6, ease: "easeOut" }}
-			>
-				<motion.div className={styles.wrapper__photo}>
-					<AnimatePresence mode="wait">
-						<motion.img
-							key={activeDirection}
-							src={directionImages[activeDirection]}
-							alt={activeDirection}
-							initial={{ opacity: 0, scale: 0.95 }}
-							animate={{ opacity: 1, scale: 1 }}
-							exit={{ opacity: 0, scale: 0.95 }}
-							transition={{ duration: 0.3, ease: "easeInOut" }}
-							loading="eager"
-						/>
-					</AnimatePresence>
-				</motion.div>
+			<div className={styles.wrapper}>
+				{imagesLoaded ? (
+					<div className={styles.wrapper__photo}>
+						{directions.map((direction) => (
+							<img
+								key={direction}
+								src={directionImages[direction]}
+								srcSet={`${directionImages[direction]} 1x, ${directionImages[direction].replace(".png", "@2x.png")} 2x, ${directionImages[direction].replace(".png", "@3x.png")} 3x`}
+								sizes="(max-width: 840px) 350px, 545px"
+								alt={direction}
+								className={`${styles.image} ${direction === activeDirection ? styles.active : ""}`}
+							/>
+						))}
+					</div>
+				) : (
+					<div className={styles.placeholder}>Загрузка...</div>
+				)}
 
 				<div className={styles.wrapper__info}>
-					<motion.div
+					<div
 						className={styles.background}
 						style={{
 							top: `${topPosition}px`,
 							height: itemHeight,
 						}}
-						transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
 					/>
-					<motion.div
+					<div
 						className={styles.indicator}
 						style={{
 							top: `${topPosition}px`,
 							height: itemHeight,
 						}}
-						transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
 					/>
-					{directions.map((direction, index) => (
-						<motion.p
+					{directions.map((direction) => (
+						<p
 							key={direction}
 							onClick={() => handleClick(direction)}
 							style={{
 								height: itemHeight,
 							}}
-							whileHover={{ x: 10 }}
-							transition={{ duration: 0.2 }}
-							initial={{ opacity: 0, x: -20 }}
-							viewport={{ once: true }}
-							whileInView={{
-								opacity: 1,
-								x: 0,
-								transition: { delay: index * 0.15 },
-							}}
+							className={styles.direction}
 						>
 							{direction}
-						</motion.p>
+						</p>
 					))}
 				</div>
-			</motion.div>
+			</div>
 		</div>
 	);
 }

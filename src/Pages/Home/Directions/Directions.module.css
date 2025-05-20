@@ -2,43 +2,73 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	grid-gap: 50px;
-
+	gap: 50px;
 	padding: 140px 0 85px;
 	flex-wrap: wrap;
 }
 
-.wrapper__photo img {
-	min-width: 545px;
+.wrapper__photo {
+	position: relative;
+	overflow: hidden;
 	width: 100%;
 	max-width: 545px;
 	height: 500px;
-	transition: opacity 0.3s ease-in-out;
+}
+
+.wrapper__photo img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-width: 545px;
+	height: 500px;
 	object-fit: contain;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	-webkit-transition: opacity 0.3s ease-in-out;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.wrapper__photo img.active {
+	opacity: 1;
+}
+
+.placeholder {
+	width: 100%;
+	max-width: 545px;
+	height: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f0f0f0;
 }
 
 .wrapper__info {
 	width: clamp(350px, 35vw, 500px);
 	min-width: 400px;
-
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	border-left: 3px solid #371b66;
 }
-.wrapper__info p {
-	padding-left: 48px;
 
+.wrapper__info .direction {
+	padding-left: 48px;
 	display: flex;
 	align-items: center;
-
 	font-size: clamp(15px, 2.5vw, 24px);
 	font-weight: 500;
 	line-height: 100%;
-
 	cursor: pointer;
 	position: relative;
 	background-color: transparent;
+	transition: transform 0.2s ease-in-out;
+	-webkit-transition: transform 0.2s ease-in-out;
+}
+
+.wrapper__info .direction:hover {
+	transform: translateX(10px);
 }
 
 .background {
@@ -48,6 +78,7 @@
 	z-index: 0;
 	background-color: #421887;
 	transition: top 0.3s ease-in-out;
+	-webkit-transition: top 0.3s ease-in-out;
 }
 
 .indicator {
@@ -58,17 +89,25 @@
 	background-color: #a417e5;
 	border-radius: 30px;
 	transition: top 0.3s ease-in-out;
+	-webkit-transition: top 0.3s ease-in-out;
 	z-index: 1;
 }
+
 @media (max-width: 840px) {
 	.wrapper {
-		grid-gap: 20px;
+		gap: 20px;
 		padding: 80px 0 40px;
 	}
-	.wrapper__photo img {
-		min-width: auto;
+	.wrapper__photo {
 		max-width: 350px;
 		max-height: 350px;
+		height: auto;
+	}
+	.wrapper__photo img {
+		max-width: 350px;
+		max-height: 350px;
+		height: auto;
+		min-width: auto;
 	}
 	.wrapper__info {
 		width: 70%;
@@ -78,18 +117,28 @@
 		width: 18px;
 	}
 }
+
 @media (max-width: 450px) {
 	.wrapper {
-		grid-gap: 10px;
+		gap: 10px;
+		min-height: 1000px;
+	}
+	.wrapper__photo {
+		width: 90%;
+		max-width: 340px;
+		max-height: 350px;
+		min-height: 350px;
 	}
 	.wrapper__photo img {
-		min-width: auto;
-		max-width: 350px;
+		width: 100%;
+		max-width: 340px;
 		max-height: 350px;
+		height: auto;
+		min-width: auto;
 	}
 	.wrapper__info {
-		min-width: auto;
 		width: 80%;
+		min-width: auto;
 	}
 	.indicator {
 		width: 15px;
