@@ -27,7 +27,6 @@ export default function Directions() {
 					img.src = url;
 					img.srcset = `${url} 1x, ${url.replace(".png", "@2x.png")} 2x, ${url.replace(".png", "@3x.png")} 3x`;
 					img.onload = () => {
-						console.log(`Изображение загружено: ${url}`);
 						resolve();
 					};
 					img.onerror = () => {
@@ -38,7 +37,6 @@ export default function Directions() {
 			});
 
 			await Promise.all(promises);
-			console.log("Все изображения загружены");
 			setImagesLoaded(true);
 		};
 
@@ -49,7 +47,6 @@ export default function Directions() {
 	}, []);
 
 	const handleClick = (direction) => {
-		console.log("Active direction:", direction);
 		setActiveDirection(direction);
 	};
 
