@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./Form.module.css";
 import Button from "../../../Global/components/Button/Button";
+import { style } from "motion/react-client";
 
 export default function HomeForm() {
 	const [fileName, setFileName] = useState("");
@@ -173,12 +174,13 @@ export default function HomeForm() {
 			<div className={styles.container}>
 				<div className={styles.inner}>
 					<form onSubmit={handleSubmit} className={styles.form} ref={formRef}>
+						<p className={styles.hint}>* необязательное поле</p>
 						<input
 							type="text"
 							id="organization"
 							name="organizationName"
 							onChange={handleChange}
-							placeholder="Наименование организации (необязательно)"
+							placeholder="Наименование организации"
 							aria-describedby="organization-error"
 						/>
 						{errors.organizationName && (
@@ -244,6 +246,7 @@ export default function HomeForm() {
 								{errors.category}
 							</span>
 						)}
+						<p className={styles.hint}>* необязательное поле</p>
 						<div className={styles.file_input}>
 							<input
 								type="file"
@@ -253,9 +256,7 @@ export default function HomeForm() {
 								style={{ display: "none" }}
 							/>
 							<label htmlFor="file-upload" className={styles.fileUpload}>
-								<span>
-									{fileName || "Добавить техническое задание (необязательно)"}
-								</span>
+								<span>{fileName || "Добавить техническое задание"}</span>
 								<img src="/download.png" alt="Загрузить файл" />
 							</label>
 						</div>
